@@ -21,10 +21,6 @@ public class BaseEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar updateTime;
 
-    @PreUpdate
-    public void onUpdateTime() {
-        updateTime = Calendar.getInstance();
-    }
 
     public Long getId() {
         return id;
@@ -32,6 +28,11 @@ public class BaseEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @PreUpdate
+    public void onUpdateTime() {
+        updateTime = Calendar.getInstance();
     }
 
     public Calendar getCreateTime() {

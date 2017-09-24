@@ -10,38 +10,32 @@ import java.util.List;
 @Entity
 public class CustomerOrder extends BaseEntity {
 
-
+    @OneToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
-    private List<Product> products;
-
     private String orderNote;
     private Double totalPrice;
-    private Double discount;
-    private Double finalTotalPrice;
+    private Double totalDiscountPrice;
+    private Double totalFinalPrice;
 
+    @OneToMany
+    @JoinTable(
+            name = "order_product",
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id")
+    )
+    private List<Product> products;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customerId")
+    public CustomerOrder() {
+
+    }
+
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "customer_order",
-//            joinColumns = @JoinColumn(name = "CATEGORY_ID"),
-//            inverseJoinColumns = @JoinColumn(name = "ARTICLE_ID")
-//    )
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public String getOrderNote() {
@@ -60,19 +54,28 @@ public class CustomerOrder extends BaseEntity {
         this.totalPrice = totalPrice;
     }
 
-    public Double getDiscount() {
-        return discount;
+
+    public Double getTotalDiscountPrice() {
+        return totalDiscountPrice;
     }
 
-    public void setDiscount(Double discount) {
-        this.discount = discount;
+    public void setTotalDiscountPrice(Double totalDiscountPrice) {
+        this.totalDiscountPrice = totalDiscountPrice;
     }
 
-    public Double getFinalTotalPrice() {
-        return finalTotalPrice;
+    public Double getTotalFinalPrice() {
+        return totalFinalPrice;
     }
 
-    public void setFinalTotalPrice(Double finalTotalPrice) {
-        this.finalTotalPrice = finalTotalPrice;
+    public void setTotalFinalPrice(Double totalFinalPrice) {
+        this.totalFinalPrice = totalFinalPrice;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

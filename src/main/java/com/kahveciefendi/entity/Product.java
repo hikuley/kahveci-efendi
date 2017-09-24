@@ -1,20 +1,22 @@
 package com.kahveciefendi.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 /**
  * Created by hikuley on 22.09.2017.
  */
 
 @Entity
-public class Product extends BaseEntity {
+public class Product extends BaseEntity{
 
     private String name;
     private String description;
     private Double price;
     private ProductType productType;
+
+    public Product() {
+
+    }
 
     public String getName() {
         return name;
@@ -48,4 +50,6 @@ public class Product extends BaseEntity {
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
+
+
 }

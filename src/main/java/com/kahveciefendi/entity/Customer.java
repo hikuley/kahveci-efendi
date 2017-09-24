@@ -7,8 +7,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Customer extends BaseEntity {
-
+public class Customer extends BaseEntity{
 
     private String name;
     private String surname;
@@ -16,6 +15,10 @@ public class Customer extends BaseEntity {
     private String password;
     private String email;
 
+
+    public Customer() {
+
+    }
 
     public String getName() {
         return name;
