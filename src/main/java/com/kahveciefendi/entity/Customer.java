@@ -7,13 +7,14 @@ import javax.persistence.Entity;
  */
 
 @Entity
-public class Customer extends BaseEntity{
+public class Customer extends BaseEntity {
 
     private String name;
     private String surname;
     private String username;
     private String password;
     private String email;
+    private String phoneNumber;
 
 
     public Customer() {
@@ -58,5 +59,13 @@ public class Customer extends BaseEntity{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

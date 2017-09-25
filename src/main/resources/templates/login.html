@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Kahveci Efendi Online Sipariş</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{css/reset.css}">
+    <link rel="stylesheet" href="webjars/foundation/6.2.3/dist/foundation.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body ng-controller="loginCtrl">
+<div class="pen-title">
+    <h1 th:text="${siteTitle}"/>
+</div>
+<!-- Form Module-->
+<div class="module form-module">
+    <div class="toggle" ng-click="toggleLogin()"><span>Üyelik için tıklayınız.</span></div>
+    <div class="form">
+        <h2>Giriş Yapınız</h2>
+        <form action="javascript:void(0);" class="loginForm" name="loginForm">
+            <input name="username" type="text" placeholder="Kullanıcı Adı"
+                   ng-model="loginRequest.username"
+                   ng-minlength="5"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <input name="password" type="password" placeholder="Şifre"
+                   ng-model="loginRequest.password"
+                   ng-minlength="5"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <a class="small button loginButton" ng-class="{'disabled':loginForm.$invalid}" ng-click="login()">Giriş</a>
+        </form>
+
+        <div ng-messages="loginForm.username.$error" ng-if='loginForm.$dirty' class="error-show" role="alert">
+            <div ng-message="required">Kullanıcı adını giriniz</div>
+            <div ng-message="minlength">Kullanıcı adı çok kısa</div>
+            <div ng-message="maxlength">Kullanıcı adı çok uzun</div>
+        </div>
+
+        <div ng-messages="loginForm.password.$error" ng-if='loginForm.$dirty' class="error-show" role="alert">
+            <div ng-message="required">Şifre giriniz</div>
+            <div ng-message="minlength">Şifre çok kısa</div>
+            <div ng-message="maxlength">Şifre adı çok uzun</div>
+        </div>
+
+    </div>
+    <div class="form">
+        <h2>Üyelik oluştur</h2>
+        <form action="javascript:void(0);" class="registerForm" name="signUpForm">
+            <input type="text" name="name" placeholder="Ad"
+                   ng-model="newCustomerRequest.name"
+                   ng-minlength="5"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <input type="text" name="surname" placeholder="Soyad"/>
+            <input type="tel" name="cellPhone" placeholder="Telefon"/>
+            <input type="email" name="email" placeholder="E-Mail"/>
+            <input type="text" name="username" placeholder="Kullanıcı Adı"/>
+            <input type="password" name="password" placeholder="Şifre"/>
+            <a class="small button registerButton" ng-click="register()">Kaydet</a>
+        </form>
+
+
+
+    </div>
+    <br>
+</div>
+<script src='webjars/jquery/2.1.3/jquery.min.js'></script>
+<script src="webjars/angularjs/1.6.4/angular.min.js"></script>
+<script src="webjars/angularjs/1.6.4/angular-messages.js"></script>
+
+
+<script th:src="@{scripts/app.js}"></script>
+<script th:src="@{scripts/controller/loginCtrl.js}"></script>
+
+</body>
+</html>
