@@ -77,12 +77,14 @@ public class OrderServiceImpl implements OrderService {
             double minimumPrice = 0;
             int minimumIndex = 0;
             for (int i = 0; i < orderList.size(); i++) {
+                Long piece = orderList.get(i).getPiece();
                 if (i == 0) {
-                    minimumPrice = orderList.get(i).getPrice().doubleValue();
+                    minimumPrice = orderList.get(i).getPrice().doubleValue() / piece;
                 } else {
                     double orderPrice = orderList.get(i).getPrice().doubleValue();
+
                     if (minimumPrice > orderPrice) {
-                        minimumPrice = orderPrice;
+                        minimumPrice = orderPrice / piece;
                         minimumIndex = i;
                     }
                 }
