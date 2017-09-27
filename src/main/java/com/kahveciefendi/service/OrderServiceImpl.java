@@ -1,7 +1,6 @@
 package com.kahveciefendi.service;
 
 import com.kahveciefendi.dto.DiscountOrderDto;
-import com.kahveciefendi.dto.ResponseDto;
 import com.kahveciefendi.entity.Customer;
 import com.kahveciefendi.entity.OrderDone;
 import com.kahveciefendi.entity.OrderLine;
