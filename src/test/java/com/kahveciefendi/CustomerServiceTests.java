@@ -26,13 +26,13 @@ public class CustomerServiceTests {
 
 
     @BeforeClass
-    public static void userServiceInitial() {
+    public static void beforeClass() {
         // Before Test initializing
 
     }
 
     @Before
-    public void userServiceBefore() {
+    public void before() {
         customer = new Customer();
         customer.setName("Halil İbrahim");
         customer.setSurname("Küley");
@@ -77,8 +77,14 @@ public class CustomerServiceTests {
 
     @Test
     public void test4_getCustomer() {
-        Customer customer = customerService.getCustomer();
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUsername("test");
+        loginDto.setPassword("test");
 
+        Customer loginResponse = customerService.login(loginDto);
+        Assert.assertNotNull("login failed", loginResponse);
+
+        Customer customer = customerService.getCustomer();
         Assert.assertNotNull("Could not record", customer);
     }
 }

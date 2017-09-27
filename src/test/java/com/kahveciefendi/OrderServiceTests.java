@@ -14,18 +14,17 @@ public class OrderServiceTests {
 
 
     @Autowired
-    OrderService customerService;
+    OrderService orderService;
 
     @BeforeClass
-    public static void userServiceInitial() {
-
+    public static void beforeClass() {
 
     }
+
 
     @Before
-    public void userServiceBefore() {
+    public void Before() {
 
     }
-
 
 }
