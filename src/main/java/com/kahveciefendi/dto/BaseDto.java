@@ -1,26 +1,13 @@
-package com.kahveciefendi.entity;
+package com.kahveciefendi.dto;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Calendar;
 
-/**
- * Created by hikuley on 22.09.2017.
- */
 
-@MappedSuperclass
-public class BaseEntity implements Serializable {
+public class BaseDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Calendar createTime;
-
-    @Temporal(TemporalType.TIMESTAMP)
     private Calendar updateTime;
-
 
     public Long getId() {
         return id;
@@ -28,10 +15,6 @@ public class BaseEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-    
-    public void onUpdateTime() {
-        updateTime = Calendar.getInstance();
     }
 
     public Calendar getCreateTime() {
@@ -50,3 +33,5 @@ public class BaseEntity implements Serializable {
         this.updateTime = updateTime;
     }
 }
+
+

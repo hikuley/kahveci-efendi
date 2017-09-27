@@ -6,5 +6,5 @@ package com.kahveciefendi.entity;
 
 public enum ProductType {
     DRINK,
-    ADDONE;
+    ADDON;
 }

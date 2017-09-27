@@ -6,11 +6,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" th:href="@{css/reset.css}">
     <link rel="stylesheet" href="webjars/foundation/6.2.3/dist/foundation.css">
-    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch'
+          href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
     <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
     <link rel="stylesheet" th:href="@{css/style.css}">
 </head>
-<body ng-controller="loginCtrl">
+<body ng-controller="loginCtrl" ng-cloak style="background: #cccccc">
 <div class="pen-title">
     <h1 th:text="${siteTitle}"/>
 </div>
@@ -22,13 +23,13 @@
         <form action="javascript:void(0);" class="loginForm" name="loginForm">
             <input name="username" type="text" placeholder="Kullanıcı Adı"
                    ng-model="loginRequest.username"
-                   ng-minlength="5"
+                   ng-minlength="4"
                    ng-maxlength="20"
                    required="required"
             />
             <input name="password" type="password" placeholder="Şifre"
                    ng-model="loginRequest.password"
-                   ng-minlength="5"
+                   ng-minlength="4"
                    ng-maxlength="20"
                    required="required"
             />
@@ -53,18 +54,54 @@
         <form action="javascript:void(0);" class="registerForm" name="signUpForm">
             <input type="text" name="name" placeholder="Ad"
                    ng-model="newCustomerRequest.name"
-                   ng-minlength="5"
+                   ng-minlength="3"
                    ng-maxlength="20"
                    required="required"
             />
-            <input type="text" name="surname" placeholder="Soyad"/>
-            <input type="tel" name="cellPhone" placeholder="Telefon"/>
-            <input type="email" name="email" placeholder="E-Mail"/>
-            <input type="text" name="username" placeholder="Kullanıcı Adı"/>
-            <input type="password" name="password" placeholder="Şifre"/>
-            <a class="small button registerButton" ng-click="register()">Kaydet</a>
-        </form>
+            <div ng-messages="signUpForm.name.$error" ng-if='signUpForm.name.$dirty' class="error-show" role="alert">
+                <div ng-message="required">Zorunlu alan</div>
+                <div ng-message="minlength">Girdiğiniz değer çok kısa</div>
+                <div ng-message="maxlength">Girdiğiniz değer çok uzun</div>
+            </div>
 
+            <input type="text" name="surname" placeholder="Soyad"
+                   ng-model="newCustomerRequest.surname"
+                   ng-minlength="3"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <div ng-messages="signUpForm.surname.$error" ng-if='signUpForm.surname.$dirty' class="error-show" role="alert">
+                <div ng-message="required">Zorunlu alan</div>
+                <div ng-message="minlength">Girdiğiniz değer çok kısa</div>
+                <div ng-message="maxlength">Girdiğiniz değer çok uzun</div>
+            </div>
+
+            <input type="text" name="username" placeholder="Kullanıcı Adı"
+                   ng-model="newCustomerRequest.username"
+                   ng-minlength="3"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <div ng-messages="signUpForm.username.$error" ng-if='signUpForm.username.$dirty' class="error-show" role="alert">
+                <div ng-message="required">Zorunlu alan</div>
+                <div ng-message="minlength">Girdiğiniz değer çok kısa</div>
+                <div ng-message="maxlength">Girdiğiniz değer çok uzun</div>
+            </div>
+
+            <input type="password" name="password" placeholder="Şifre"
+                   ng-model="newCustomerRequest.password"
+                   ng-minlength="3"
+                   ng-maxlength="20"
+                   required="required"
+            />
+            <div ng-messages="signUpForm.password.$error" ng-if='signUpForm.password.$dirty' class="error-show" role="alert">
+                <div ng-message="required">Zorunlu alan</div>
+                <div ng-message="minlength">Girdiğiniz değer çok kısa</div>
+                <div ng-message="maxlength">Girdiğiniz değer çok uzun</div>
+            </div>
+
+            <a class="small button registerButton" ng-click="register()">Üye Ol</a>
+        </form>
 
 
     </div>
@@ -76,7 +113,8 @@
 
 
 <script th:src="@{scripts/app.js}"></script>
-<script th:src="@{scripts/controller/loginCtrl.js}"></script>
+<script th:src="@{scripts/controller/loginController.js}"></script>
+<script th:src="@{scripts/service/customerService.js}"></script>
 
 </body>
 </html>

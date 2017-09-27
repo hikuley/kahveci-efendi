@@ -1,26 +1,32 @@
-package com.kahveciefendi.entity;
+package com.kahveciefendi.dto;
 
-import com.kahveciefendi.listener.EntityListener;
-
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
- * Created by hikuley on 22.09.2017.
+ * Created by hikuley on 25/09/17.
  */
 
-@Entity
-@EntityListeners(value = EntityListener.class)
-public class Customer extends BaseEntity {
+public class CustomerDto extends BaseDto {
+
+
+    private static final int USERNAME_MIN_LENGTH = 4;
+    private static final int USERNAME_MAX_LENGTH = 100;
+
+    private static final int PASSWORD_MIN_LENGTH = 4;
+    private static final int PASSWORD_MAX_LENGTH = 100;
 
     private String name;
+
     private String surname;
+
+    @NotNull
+    @Size(min = USERNAME_MIN_LENGTH, max = USERNAME_MAX_LENGTH)
     private String username;
+
+    @NotNull
+    @Size(min = PASSWORD_MIN_LENGTH, max = PASSWORD_MAX_LENGTH)
     private String password;
-
-    public Customer() {
-
-    }
 
     public String getName() {
         return name;
@@ -53,5 +59,4 @@ public class Customer extends BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }
