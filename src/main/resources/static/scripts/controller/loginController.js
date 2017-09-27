@@ -24,7 +24,7 @@ app.controller('loginCtrl', function ($scope, customerService) {
         if ($scope.loginForm.$valid) {
             customerService.login($scope.loginRequest).then(function (response) {
                 var result = response.data;
-                if (result.status == "OK") {
+                if (result.status == true) {
                     window.location = "/";
                 }
                 else {
@@ -39,11 +39,11 @@ app.controller('loginCtrl', function ($scope, customerService) {
 
     };
 
-    $scope.register = function () {
+    $scope.signUp = function () {
         if ($scope.signUpForm.$valid) {
             customerService.signUp($scope.newCustomerRequest).then(function (response) {
                 var result = response.data;
-                if (result.status == "OK") {
+                if (result.status == true) {
 
                     alert("Üyelik tamamlandı giriş yapabilirsiniz.");
 

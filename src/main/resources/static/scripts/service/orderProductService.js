@@ -12,4 +12,8 @@ app.service("orderProductService", function ($http) {
         return $http.post("/api/order/orderDone", request);
     };
 
+    this.getOrderHistory = function (customerId) {
+        return $http.get("/api/order/history/" + customerId);
+    };
+
 });

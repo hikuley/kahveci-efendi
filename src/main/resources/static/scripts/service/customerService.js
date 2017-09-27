@@ -8,8 +8,4 @@ app.service("customerService", function ($http) {
         return $http.post("/api/customer/signUp", request);
     };
 
-    this.logout = function () {
-        return $http.get("/api/customer/logout");
-    };
-
 });

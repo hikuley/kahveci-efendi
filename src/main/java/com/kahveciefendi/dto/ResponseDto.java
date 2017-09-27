@@ -1,24 +1,24 @@
 package com.kahveciefendi.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 
 import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Response {
+public class ResponseDto {
 
-    private HttpStatus status;
+    private Boolean status;
     private String message;
     private Object data;
     private List<FieldError> fieldErrors;
 
-    public HttpStatus getStatus() {
+
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(HttpStatus status) {
+    public void setStatus(Boolean status) {
         this.status = status;
     }
 

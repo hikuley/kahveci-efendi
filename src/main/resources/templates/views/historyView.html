@@ -1,0 +1,28 @@
+<div th:fragment="historyView" xmlns:th="http://www.w3.org/1999/xhtml" ng-cloak  ng-controller="historyCtrl" ng-init="init()">
+    <input type="hidden" id="customerId" th:value="${customer.id}">
+    <div class="row" style="margin: 20px auto;">
+        <div class="large-8 columns">
+            <h4 class="subheader">Geçmiş Siparişlerim</h4>
+
+            <div class="basket" ng-repeat="orderdone in orderDoneList">
+                <ol>
+                    <li ng-repeat="order in orderdone.orderList">{{order.product.name}}<div class="float-right"><span class="basket_item">{{order.piece}} X {{order.product.price}}</span>{{order.price}} TL</div>
+                        <ol>
+                            <li ng-repeat="productAddon in order.addons">{{productAddon.name}} <div class="float-right"><span class="basket_item">{{order.piece}} X {{productAddon.price}}</span><span>{{productAddon.price*order.piece}} TL</span></div></li>
+                        </ol>
+                        <blockquote ng-if="order.orderNote" style="font-size: 12px;">{{order.orderNote}}</blockquote>
+                    </li>
+                </ol>
+                <div>
+                    <div class="basket_sum">Toplam: <span class="float-right">{{orderdone.price}} TL</span></div>
+                    <div class="basket_sum">Toplam İndirim: <span class="float-right">{{orderdone.discountPrice}} TL</span></div>
+                    <div class="basket_sum">Ödenmiş Tutar: <span class="float-right">{{orderdone.finalPrice}} TL</span></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+

@@ -2,7 +2,7 @@
  * Created by hikuley on 25.09.2017.
  */
 
-app.controller('homeCtrl', function ($scope, orderProductService) {
+app.controller('orderCtrl', function ($scope, orderProductService, customerService) {
 
     $scope.products = null;
     $scope.orderList = null;
@@ -66,23 +66,22 @@ app.controller('homeCtrl', function ($scope, orderProductService) {
         $scope.orderList.push(order);
 
         $scope.closeModal();
-    }
+    };
 
     $scope.checkedAddon = function (product) {
         if ($scope.selectedAddon == null) {
             $scope.selectedAddon = [];
         }
         $scope.selectedAddon.push(product);
-    }
+    };
 
     $scope.openModal = function () {
         $('[data-remodal-id=productDetail]').remodal().open();
-    }
+    };
 
     $scope.closeModal = function () {
         $('[data-remodal-id=productDetail]').remodal().close();
-    }
-
+    };
 
     $scope.calculatedDiscountOrder = function () {
         orderProductService.applyDiscount($scope.orderList).then(function (response) {
@@ -92,7 +91,7 @@ app.controller('homeCtrl', function ($scope, orderProductService) {
             alert("İşleminiz gerçekleşmedi, lütfen daha sonra tekrar deneyiniz.");
         })
 
-    }
+    };
 
     $scope.orderDone = function () {
         orderProductService.orderDone($scope.calculatedPrice).then(function (response) {
@@ -102,7 +101,7 @@ app.controller('homeCtrl', function ($scope, orderProductService) {
         }, function () {
             alert("İşleminiz gerçekleşmedi, lütfen daha sonra tekrar deneyiniz.");
         });
-    }
+    };
 
 
 });
