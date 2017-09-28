@@ -111,8 +111,8 @@ public class OrderServiceImpl implements OrderService {
         return discountOrder;
     }
 
-    @Transactional
     @Override
+    @Transactional
     public OrderDone orderDone(DiscountOrderDto finalOrder) {
 
         log.debug("The order line items saving to database by customer info.");
@@ -128,6 +128,7 @@ public class OrderServiceImpl implements OrderService {
         return orderDoneRepository.save(orderDone);
     }
 
+    @Transactional
     @Override
     public List<OrderDone> orderHistory(Long customerId) {
         List<OrderDone> orders = orderDoneRepository.findOrderDonesByCustomerIdOrderByIdDesc(customerId);

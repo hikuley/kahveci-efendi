@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -28,12 +29,14 @@ public class CustomerServiceImpl implements CustomerService {
     private HttpServletRequest currentRequest;
 
     @Override
+    @Transactional
     public Customer signUp(Customer customer) {
         Customer saved = customerRepository.save(customer);
         return saved;
     }
 
     @Override
+    @Transactional
     public Customer login(LoginDto loginDto) {
         Customer customer = customerRepository.findByUsernameAndPassword(loginDto.getUsername(), loginDto.getPassword());
 
