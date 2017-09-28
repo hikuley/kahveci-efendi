@@ -130,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderDone> orderHistory(Long customerId) {
-        List<OrderDone> orders = orderDoneRepository.findOrderDonesByCustomerId(customerId);
+        List<OrderDone> orders = orderDoneRepository.findOrderDonesByCustomerIdOrderByIdDesc(customerId);
         return orders;
     }
 }

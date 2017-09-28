@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface OrderDoneRepository extends CrudRepository<OrderDone, Long> {
-    List<OrderDone> findOrderDonesByCustomerId(Long customerId);
+    List<OrderDone> findOrderDonesByCustomerIdOrderByIdDesc(Long customerId);
 }
