@@ -1,7 +1,7 @@
 ---
-applications:
-- name: kahveci-efendi
-  memory: 768M
-  instances: 1
-  random-route: true
-  path: build/libs/spring-music.jar
+  applications:
+  - name: kahveci-efendi
+    memory: 768M
+    instances: 1
+    random-route: true
+    path: target/kahveci-efendi-0.0.1-SNAPSHOT.jar
